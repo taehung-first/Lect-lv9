@@ -14,7 +14,6 @@ public class BankManager {
 	private UserManager um = UserManager.instance;
 	private AccountManager am = AccountManager.instance;
 	
-	// 기능 메소드 구현
 	public void run() {
 		fm.load();
 		boolean isRun = true;
@@ -24,7 +23,6 @@ public class BankManager {
 			printAllData();
 			printMenu();
 			isRun = selectMenu();
-	
 		}
 		fm.save();
 	}
@@ -45,9 +43,7 @@ public class BankManager {
 		}else {
 			System.out.println(" 1입금\n 2.출금\n 3.조회\n 4.이체\n 5.계좌생성\n 6.계좌철회\n 7.로그아웃");
 		}
-		
 	}
-
 	private boolean selectMenu() {
 		System.out.println("menu : ");
 		String input = sc.next();

@@ -14,7 +14,6 @@ public class User {
 	private int money;
 	
 	UserManager user = UserManager.instance;
-	//getter
 	private ArrayList<Account> accs = new ArrayList<Account>();
 	
 	public User(int code, String id, String pw, String name) {

@@ -100,7 +100,6 @@ public class AccountManager {
 	}
 
 	public void printUserAccs(int log) {
-		// 로그인한 회원으 계좌만 선별해서 계좌정보를 보여줌
 		int index = -1;
 		int n = 0;
 		for (int i = 0; i < this.accs.size(); i++) {
@@ -123,7 +122,6 @@ public class AccountManager {
 			int accNum = Integer.parseInt(input);
 			int money = Integer.parseInt(input2);
 
-			// 상대방 계좌 확인
 			int accIdx = -1;
 			for (int i = 0; i < this.accs.size(); i++) {
 				if (this.accs.get(i).getAccNum() == accNum) {
@@ -131,12 +129,10 @@ public class AccountManager {
 				}
 			}
 
-			// 내 계좌 확인
 			int myAccIdx = selectUserAccs(log,"출금할");
 			int balance = this.accs.get(myAccIdx).getMoney();
 
 			if (balance >= money && myAccIdx != accIdx) {
-				// 이체시작
 				balance -= money;
 				this.accs.get(myAccIdx).setMoney(balance);
 
@@ -191,11 +187,9 @@ public class AccountManager {
 	public int getAccsSize() {
 		return this.accs.size();
 	}
-	
 	public Account getAcc(int index) {
 		return this.accs.get(index);
 	}
-	
 	public void addAcc(Account e) {
 		this.accs.add(e);
 	}

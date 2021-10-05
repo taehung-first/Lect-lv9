@@ -16,9 +16,9 @@ class ItemManager {
 	Vector<Cart> jangList = new Vector<Cart>(); // 전체 장바구니
 	
 	ItemManager() {
-		
 		init();
 	}
+	
 	void init() {
 		category.add("과자");
 		category.add("생선");

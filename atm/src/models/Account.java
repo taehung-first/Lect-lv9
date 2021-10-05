@@ -32,7 +32,6 @@ public class Account {
 		return this.money;
 	}
 	
-	//setter
 	public void setMoney(int money) {
 		this.money = money;
 	}
