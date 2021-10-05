@@ -6,8 +6,7 @@ import 장바구니미니프로젝트.UserManager;
 
 public class Shop {
 	Scanner scan = new Scanner(System.in);
-	private UserManager um = new UserManager.instance();
-	private ItemManager im = new ItemManager();
+	private UserManager um = new UserManager();
 	
 	
 	void mainMenu() {
@@ -55,20 +54,7 @@ public class Shop {
 	}
 
 	void shopMenu() {
-		boolean run = true;
-		while (run) {
-			im.printCategory();
-			System.out.println("[카테고리] 번호를 입력하세요.[종료.-1]");
-			int caID = scan.nextInt();
-			if (caID == -1)
-				break;
-			System.out.println("[아이템] 번호를 입력하세요. ");
-			im.printItemList(caID);
-			int itID = scan.nextInt();
-			im.addCart(um.userList.get(um.userLog).id, caID, itID);
-		}
 	}
-
 	void managerMenu() {
 		boolean run = true;
 		while (run) {
@@ -94,7 +80,6 @@ public class Shop {
 			System.out.println("[1.전체카테고리] [2.카테고리추가] [3.카테고리삭제] [0.뒤로가기]");
 			int sel = scan.nextInt();
 			if (sel == 1) {
-				im.printCategory();
 			} else if (sel == 2) {
 
 			} else if (sel == 0) {
@@ -109,9 +94,7 @@ public class Shop {
 			System.out.println("[1.전체아이템] [2.아이템추가] [3.아이템삭제] [0.뒤로가기]");
 			int sel = scan.nextInt();
 			if (sel == 1) {
-				im.printItemList();
 			} else if (sel == 2) {
-				im.addItem();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -129,13 +112,5 @@ public class Shop {
 				run = false;
 			}
 		}
-	}
-
-	public UserManager getInstance() {
-		return instance;
-	}
-
-	public void setInstance(UserManager instance) {
-		this.instance = instance;
 	}
 }
