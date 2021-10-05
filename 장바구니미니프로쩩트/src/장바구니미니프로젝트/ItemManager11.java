@@ -3,21 +3,14 @@ package 장바구니미니프로젝트;
 import java.util.Scanner;
 import java.util.Vector;
 
-import 장바구니model.Item;
-import 장바구니model.Cart;
-
-public class ItemManager {
-	public static ItemManager instance = new ItemManager();
+class ItemManager {
 	Scanner scan = new Scanner(System.in);
-	
 	Vector<String> category = new Vector<String>();
-	Vector<Item> itemList = new Vector<Item>(); 
+	Vector<Item> itemList = new Vector<Item>(); // 전체 아이템리스트
 	Vector<Cart> jangList = new Vector<Cart>(); // 전체 장바구니
-	
 	ItemManager() {
 		init();
 	}
-	
 	void init() {
 		category.add("과자");
 		category.add("생선");
@@ -52,12 +45,27 @@ public class ItemManager {
 	}
 
 	void printCategory() {
+		for (int i = 0; i < category.size(); i++) {
+			System.out.println("[" + i + "] " + category.get(i));
+		}
 	}
 
 	void printItemList() {
+		for (int i = 0; i < itemList.size(); i++) {
+			System.out.print("[" + i + "]");
+			itemList.get(i).print();
+		}
 	}
 
 	void printItemList(int caID) {
+		int n = 0;
+		for (int i = 0; i < itemList.size(); i++) {
+			if (category.get(caID).equals(itemList.get(i).category)) {
+				System.out.print("[" + n + "]");
+				itemList.get(i).print();
+				n += 1;
+			}
+		}
 	}
 
 	void addItem() {
@@ -73,8 +81,23 @@ public class ItemManager {
 	}
 
 	void addCategory() {
+		System.out.println("[카테고리추가] 카테고리 이름을 입력하세요. ");
+		String name = scan.next();
+		category.add(name);
 	}
 
 	void addCart(String usID, int caID, int itemID) {
+		int n = 0;
+		Cart temp = new Cart();
+		temp.userId = usID;
+		for (int i = 0; i < itemList.size(); i++) {
+			if (category.get(caID).equals(itemList.get(i).category)) {
+				if (itemID == n) {
+					temp.itemName = itemList.get(i).name;
+				}
+				n += 1;
+			}
+		}
+		jangList.add(temp);
 	}
 }

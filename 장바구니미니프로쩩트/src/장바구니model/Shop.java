@@ -6,8 +6,9 @@ import 장바구니미니프로젝트.UserManager;
 
 public class Shop {
 	Scanner scan = new Scanner(System.in);
-	private UserManager um = new UserManager();
 	
+	private UserManager um = new UserManager();
+	private I
 	
 	void mainMenu() {
 		boolean run = ture;

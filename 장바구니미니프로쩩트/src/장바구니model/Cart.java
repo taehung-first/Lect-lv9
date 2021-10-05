@@ -1,8 +1,8 @@
 package 장바구니model;
 
-class Cart {
-	String userId;
-	String itemName;
+public class Cart {
+	private String userId;
+	private String itemName;
 
 	void print() {
 		System.out.println(userId + "아이템 : " + itemName);
