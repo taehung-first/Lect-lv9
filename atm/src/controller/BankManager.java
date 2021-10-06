@@ -7,7 +7,6 @@ import models.Bank;
 public class BankManager {
 
 	public static Scanner sc = new Scanner(System.in);
-	
 	public static BankManager instance = new BankManager();
 	
 	private FileManager fm = FileManager.instance;
