@@ -1,5 +1,3 @@
-package controller;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,11 +6,13 @@ import models.Account;
 public class AccountManager {
 
 	private ArrayList<Account> accs = new ArrayList<>();
+
 	public static AccountManager instance = new AccountManager();
 	private UserManager um = UserManager.instance;
 
 	public void inputMoney(int log) {
 		int accIdx = selectUserAccs(log,"입금할");
+		/////////////////////////////
 
 		System.out.print("입금금액 : ");
 		String input = BankManager.sc.next();
@@ -23,9 +23,11 @@ public class AccountManager {
 			int balance = this.accs.get(accIdx).getMoney();
 			balance += money;
 			this.accs.get(accIdx).setMoney(balance);
+
 		} catch (Exception e) {
-			
+
 		}
+
 	}
 
 	public void outMoney(int log) {
@@ -36,15 +38,18 @@ public class AccountManager {
 
 		try {
 			int money = Integer.parseInt(input);
+
 			int balance = this.accs.get(accIdx).getMoney();
-			
+
 			if (money < balance) {
 				balance -= money;
 				this.accs.get(accIdx).setMoney(balance);
 			} else {
 				System.out.println("잔액이 부족합니다.");
 			}
+
 		} catch (Exception e) {
+
 		}
 	}
 
@@ -78,20 +83,8 @@ public class AccountManager {
 
 		System.out.printf("%s계좌 선택 (1~%d): ", sub, um.getUserAccSize(log));
 		String input = BankManager.sc.next();
-		
 		try {
-			
-			int idx = Integer.parseInt(input);
-			
-			int cnt=0;
-			for(int i=0;i<this.accs.size();i++) {
-				if(this.accs.get(i).getUserCode()==getUserCode(log)) {
-					cnt++;
-					if(cnt==idx) {
-						accIdx=i;
-					}
-				}
-			}
+			accIdx = Integer.parseInt(input) - 1;
 			return accIdx;
 		} catch (Exception e) {
 			return accIdx;
@@ -100,6 +93,7 @@ public class AccountManager {
 	}
 
 	public void printUserAccs(int log) {
+		// 로그인한 회원으 계좌만 선별해서 계좌정보를 보여줌
 		int index = -1;
 		int n = 0;
 		for (int i = 0; i < this.accs.size(); i++) {
@@ -122,6 +116,7 @@ public class AccountManager {
 			int accNum = Integer.parseInt(input);
 			int money = Integer.parseInt(input2);
 
+			// 상대방 계좌 확인
 			int accIdx = -1;
 			for (int i = 0; i < this.accs.size(); i++) {
 				if (this.accs.get(i).getAccNum() == accNum) {
@@ -129,10 +124,12 @@ public class AccountManager {
 				}
 			}
 
+			// 내 계좌 확인
 			int myAccIdx = selectUserAccs(log,"출금할");
 			int balance = this.accs.get(myAccIdx).getMoney();
 
 			if (balance >= money && myAccIdx != accIdx) {
+				// 이체시작
 				balance -= money;
 				this.accs.get(myAccIdx).setMoney(balance);
 
@@ -187,9 +184,11 @@ public class AccountManager {
 	public int getAccsSize() {
 		return this.accs.size();
 	}
+	
 	public Account getAcc(int index) {
 		return this.accs.get(index);
 	}
+	
 	public void addAcc(Account e) {
 		this.accs.add(e);
 	}

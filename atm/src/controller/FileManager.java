@@ -1,5 +1,3 @@
-package controller;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,7 +9,6 @@ import models.User;
 public class FileManager {
 
 	public static FileManager instance = new FileManager();
-	
 	private UserManager um = UserManager.instance;
 	private AccountManager am = AccountManager.instance;
 
@@ -28,6 +25,10 @@ public class FileManager {
 	
 	
 	public void save() {
+		/*
+		 * user
+		 * code / id / pw / name
+		 */ 
 		String data = "";
 		for(int i=0; i<um.getUsersSize(); i++) {
 			data += um.getUser(i).getCode() + "/";
@@ -45,6 +46,9 @@ public class FileManager {
 		}catch(Exception e) {
 			System.out.println("저장실패");
 		}
+		/* accs
+		 * code / num / money
+		 */
 		
 		data = "";	
 		for(int i=0; i<am.getAccsSize(); i++) {
@@ -64,6 +68,7 @@ public class FileManager {
 	
 	public void load() {
 		
+		//users
 		try {
 			file = new File(accsFileName);
 			fr = new FileReader(file);

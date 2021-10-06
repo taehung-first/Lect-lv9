@@ -1,5 +1,3 @@
-package controller;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -10,6 +8,7 @@ import models.User;
 public class UserManager {
 	public static UserManager instance = new UserManager();
 	Scanner sc = new Scanner(System.in);
+	// User 배열이 존재
 	private ArrayList<User> users = new ArrayList<User>();
 		
 	
@@ -17,6 +16,8 @@ public class UserManager {
 		this.users = new ArrayList<>();
 	}
 	
+	// 기능 메소드 구현
+	// 가입
 	public void joinUser() {
 		System.out.println("id : ");
 		String id = BankManager.sc.next();
@@ -78,9 +79,12 @@ public class UserManager {
 	public void removeAcc(int log, Account e) {
 		this.users.get(log).removeAcc(e);
 	}
+	// 탈퇴
+	// 사이즈
 	public int getUsersSize() {
 		return this.users.size();
 	}
+	// 회원조회
 	public User getUser(int index) {
 		return this.users.get(index);
 	}
@@ -92,4 +96,7 @@ public class UserManager {
 	public void addAcc(int log, Account e) {
 		this.users.get(log).addAcc(e);
 	}
+	
+	
+	
 }

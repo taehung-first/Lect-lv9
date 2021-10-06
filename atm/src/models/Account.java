@@ -1,12 +1,9 @@
-package models;
-
 public class Account {
 	public static final int MAX = 3;
 	
 	private int accNum;
 	private int money;
 	private int userCode;
-	
 	
 	public Account(int userCode, int accNum) {
 		this.userCode = userCode;
@@ -32,6 +29,7 @@ public class Account {
 		return this.money;
 	}
 	
+	//setter
 	public void setMoney(int money) {
 		this.money = money;
 	}

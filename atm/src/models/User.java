@@ -1,5 +1,3 @@
-package models;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,13 +5,14 @@ import controller.UserManager;
 
 public class User {
 	Random rn = new Random();
-	private int code;	
+	private int code;	// 1000~ 9999 Áßº¹X ·£´ý
 	private String id;
 	private String pw;
 	private String name;
 	private int money;
 	
 	UserManager user = UserManager.instance;
+	//getter
 	private ArrayList<Account> accs = new ArrayList<Account>();
 	
 	public User(int code, String id, String pw, String name) {
