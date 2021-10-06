@@ -4,56 +4,49 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import models.Account;
-import models.User;
+import models.계좌;
+import models.사용자;
 
-public class UserManager {
-	public static UserManager instance = new UserManager();
+public class 사용자매니저 {
+	public static 사용자매니저 instance = new 사용자매니저();
 	Scanner sc = new Scanner(System.in);
 	// User 배열이 존재
-	private ArrayList<User> users = new ArrayList<User>();
-		
+	private ArrayList<사용자> users = new ArrayList<사용자>();
 	
-	private UserManager() {
+	private 사용자매니저() {
 		this.users = new ArrayList<>();
 	}
-	
-	// 기능 메소드 구현
-	// 가입
 	public void joinUser() {
 		System.out.println("id : ");
-		String id = BankManager.sc.next();
+		String id = 은행매니저.sc.next();
 		System.out.println("pw : ");
-		String pw = BankManager.sc.next();
+		String pw = 은행매니저.sc.next();
 		
 		boolean check = false;
-		for(User user : users) {
+		for(사용자 user : users) {
 			if(id.equals(user.getId()))
 				check = true;
 		}
-		
 		if(!check) {
 			System.out.print("이름 입력 : ");
-			String name = BankManager.sc.next();
+			String name = 은행매니저.sc.next();
 			
-			this.users.add(new User(randomCode(), id, pw, name));
+			this.users.add(new 사용자(randomCode(), id, pw, name));
 		}else {
 			System.out.println("중복된 아이디 입니다.");
 		}
 	}
-	public void addUser(User e) {
+	public void addUser(사용자 e) {
 		this.users.add(e);
 	}
-	
-	
 	public void removeUser() {
 		System.out.println("id : ");
-		String id = BankManager.sc.next();
+		String id = 은행매니저.sc.next();
 		System.out.println("pw : ");
-		String pw = BankManager.sc.next();
+		String pw = 은행매니저.sc.next();
 		
-		User delUser = null;
-		for(User user : users) {
+		사용자 delUser = null;
+		for(사용자 user : users) {
 			if(id.equals(user.getId())&&pw.equals(user.getPw())) {
 				delUser = user;
 			}else {
@@ -69,7 +62,7 @@ public class UserManager {
 			int rCode = rn.nextInt(8999)+1000;
 			
 			boolean check = false;
-			for(User user : users) {
+			for(사용자 user : users) {
 				if(rCode == user.getCode())
 					check = true;
 			}
@@ -77,7 +70,6 @@ public class UserManager {
 				return rCode;
 		}
 	}
-	
 	public void removeAcc(int log, 계좌 e) {
 		this.users.get(log).removeAcc(e);
 	}
@@ -87,7 +79,7 @@ public class UserManager {
 		return this.users.size();
 	}
 	// 회원조회
-	public User getUser(int index) {
+	public 사용자 getUser(int index) {
 		return this.users.get(index);
 	}
 	
@@ -95,10 +87,11 @@ public class UserManager {
 		return this.users.get(log).getAccsSize();
 	}
 	
-	public void addAcc(int log, Account e) {
+	public void addAcc(int log, 계좌 e) {
 		this.users.get(log).addAcc(e);
 	}
 	
-	
-	
 }
+	
+		
+	

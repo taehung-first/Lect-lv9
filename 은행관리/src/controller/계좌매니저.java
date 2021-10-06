@@ -3,21 +3,19 @@ package controller;
 import java.util.ArrayList;
 import java.util.Random;
 
-import models.Account;
+import models.계좌;
 
-public class AccountManager {
-
-	private ArrayList<Account> accs = new ArrayList<>();
-
-	public static AccountManager instance = new AccountManager();
-	private UserManager um = UserManager.instance;
-
+public class 계좌매니저{
+	static 계좌매니저 instance = new 계좌매니저();
+	private ArrayList<계좌> accs = new ArrayList<계좌>();
+	private 사용자매니저 um = 사용자매니저.instance;
+	
 	public void inputMoney(int log) {
 		int accIdx = selectUserAccs(log,"입금할");
 		/////////////////////////////
 
 		System.out.print("입금금액 : ");
-		String input = BankManager.sc.next();
+		String input = 은행매니저.sc.next();
 		try {
 
 			int money = Integer.parseInt(input);
@@ -27,16 +25,13 @@ public class AccountManager {
 			this.accs.get(accIdx).setMoney(balance);
 
 		} catch (Exception e) {
-
 		}
-
 	}
-
 	public void outMoney(int log) {
 		int accIdx = selectUserAccs(log,"출금할");
 
 		System.out.println("출금금액 : ");
-		String input = BankManager.sc.next();
+		String input = 은행매니저.sc.next();
 
 		try {
 			int money = Integer.parseInt(input);
@@ -54,7 +49,6 @@ public class AccountManager {
 
 		}
 	}
-
 	public void dropAccount(int log) {
 		if (um.getUserAccSize(log) > 1) {
 			
@@ -68,23 +62,20 @@ public class AccountManager {
 				balance += money;
 				this.accs.get(defaultAccIdx).setMoney(money);
 			
-				Account delAcc = this.accs.get(delAccIdx);
+				계좌 delAcc = this.accs.get(delAccIdx);
 				this.accs.remove(delAcc);
 				um.removeAcc(log, delAcc);
 				
 			}
-
 		}
-
 	}
-
 	public int selectUserAccs(int log, String sub) {
 		printUserAccs(log);
 
 		int accIdx = -1;
 
 		System.out.printf("%s계좌 선택 (1~%d): ", sub, um.getUserAccSize(log));
-		String input = BankManager.sc.next();
+		String input = 은행매니저.sc.next();
 		try {
 			accIdx = Integer.parseInt(input) - 1;
 			return accIdx;
@@ -93,7 +84,6 @@ public class AccountManager {
 		}
 
 	}
-
 	public void printUserAccs(int log) {
 		// 로그인한 회원으 계좌만 선별해서 계좌정보를 보여줌
 		int index = -1;
@@ -106,13 +96,12 @@ public class AccountManager {
 			}
 		}
 	}
-
 	public void moveMoney(int log) {
 		System.out.print("이체할 계좌번호 : ");
-		String input = BankManager.sc.next();
+		String input = 은행매니저.sc.next();
 
 		System.out.println("이체할 금액 : ");
-		String input2 = BankManager.sc.next();
+		String input2 = 은행매니저.sc.next();
 
 		try {
 			int accNum = Integer.parseInt(input);
@@ -148,23 +137,20 @@ public class AccountManager {
 		}
 
 	}
-
 	public int getUserCode(int log) {
 		int userCode = um.getUser(log).getCode();
 		return userCode;
 
 	}
-
 	public void createAcc(int log) {
-		if (um.getUserAccSize(log) < Account.MAX) {
-			Account newAcc = new Account(getUserCode(log), ranAccNum());
+		if (um.getUserAccSize(log) < 계좌.MAX) {
+			계좌 newAcc = new 계좌(getUserCode(log), ranAccNum());
 			this.accs.add(newAcc);
 			um.addAcc(log, newAcc);
 		} else {
 			System.out.println("더이상 가입이 불가능합니다");
 		}
 	}
-
 	public int ranAccNum() {
 		Random rn = new Random();
 
@@ -172,7 +158,7 @@ public class AccountManager {
 		while (true) {
 			int rNum = rn.nextInt(89999) + 10000;
 
-			for (Account acc : accs) {
+			for (계좌 acc : accs) {
 				if (rNum == acc.getAccNum()) {
 					check = true;
 				}
@@ -182,17 +168,17 @@ public class AccountManager {
 			}
 		}
 	}
-	
 	public int getAccsSize() {
 		return this.accs.size();
 	}
 	
-	public Account getAcc(int index) {
+	public 계좌 getAcc(int index) {
 		return this.accs.get(index);
 	}
 	
-	public void addAcc(Account e) {
+	public void addAcc(계좌 e) {
 		this.accs.add(e);
 	}
+
 
 }

@@ -2,24 +2,21 @@ package controller;
 
 import java.util.Scanner;
 
-import models.Bank;
+import models.은행;
 
-public class BankManager {
-
+public class 은행매니저{
 	public static Scanner sc = new Scanner(System.in);
+	static 은행매니저 instance = new 은행매니저();
 	
-	public static BankManager instance = new BankManager();
+	private 파일관리자 fm = 파일관리자.instance;
+	private 사용자매니저 um = 사용자매니저.instance;
+	private 계좌매니저 am = 계좌매니저.instance;
 	
-	private FileManager fm = FileManager.instance;
-	private UserManager um = UserManager.instance;
-	private AccountManager am = AccountManager.instance;
-	
-	// 기능 메소드 구현
 	public void run() {
 		fm.load();
 		boolean isRun = true;
 		while(isRun) {
-			System.out.println(Bank.instance.getBrand()+ " ATM");
+			System.out.println(은행.instance.getBrand()+ " ATM");
 			
 			printAllData();
 			printMenu();
@@ -28,7 +25,6 @@ public class BankManager {
 		}
 		fm.save();
 	}
-	
 	private void printAllData() {
 		for(int i=0; i<um.getUsersSize(); i++) {
 			System.out.println(um.getUser(i));
@@ -38,16 +34,13 @@ public class BankManager {
 			}
 		}
 	}
-	
 	private void printMenu() {
-		if(Bank.log == -1) {
+		if(은행.log == -1) {
 			System.out.println(" 1.로그인\n 2.회원가입\n 3.회원탈퇴\n 4.종료 ");			
 		}else {
 			System.out.println(" 1입금\n 2.출금\n 3.조회\n 4.이체\n 5.계좌생성\n 6.계좌철회\n 7.로그아웃");
 		}
-		
 	}
-
 	private boolean selectMenu() {
 		System.out.println("menu : ");
 		String input = sc.next();
@@ -55,7 +48,7 @@ public class BankManager {
 		try {
 			int sel = Integer.parseInt(input);
 			
-			if(Bank.log == -1) {
+			if(은행.log == -1) {
 				if(sel == 1) {
 					login();
 				}else if(sel == 2) {
@@ -69,22 +62,22 @@ public class BankManager {
 					System.out.println("잘못된 선택입니다.");
 				}
 			}else {
-				if(um.getUserAccSize(Bank.log) > 0) {
+				if(um.getUserAccSize(은행.log) > 0) {
 					if(sel == 1) {
-						am.inputMoney(Bank.log);
+						am.inputMoney(은행.log);
 					}else if(sel == 2) {
-						am.outMoney(Bank.log);
+						am.outMoney(은행.log);
 					}else if(sel == 3) {
-						am.printUserAccs(Bank.log);
+						am.printUserAccs(은행.log);
 					}else if(sel == 4) {
-						am.moveMoney(Bank.log);
+						am.moveMoney(은행.log);
 					}else if(sel == 6) {
-						am.dropAccount(Bank.log);
+						am.dropAccount(은행.log);
 					}
 				}
 				
 				if(sel == 5) {
-					am.createAcc(Bank.log);
+					am.createAcc(은행.log);
 				}if(sel == 7) {
 					logout();
 				}
@@ -95,7 +88,6 @@ public class BankManager {
 		}
 		return true;
 	}
-
 	private void login() {
 		System.out.println("id : ");
 		String id = sc.next();
@@ -104,16 +96,14 @@ public class BankManager {
 		
 		for(int i=0; i<um.getUsersSize(); i++) {
 			if(id.equals(um.getUser(i).getId())&& pw.equals(um.getUser(i).getPw())) {
-				Bank.log = i;
+				은행.log = i;
 			}
 		}
-		if(Bank.log != -1) {
+		if(은행.log != -1) {
 			System.out.println("로그인 성공");
 		}
 	}
 	private void logout() {
-		Bank.log = -1;
+		은행.log = -1;
 	}
-
-	
 }

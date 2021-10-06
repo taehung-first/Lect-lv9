@@ -1,24 +1,23 @@
 package models;
 
-public class Account {
-	public static final int MAX = 3;
+public class °èÁÂ {
+public static final int MAX = 3;
 	
 	private int accNum;
 	private int money;
 	private int userCode;
 	
-	public Account(int userCode, int accNum) {
+	public °èÁÂ(int userCode, int accNum) {
 		this.userCode = userCode;
 		this.accNum = accNum;
 		this.money = 1000;
 	}
-	public Account(int userCode, int accNum, int money) {
+	public °èÁÂ(int userCode, int accNum, int money) {
 		this.userCode = userCode;
 		this.accNum = accNum;
 		this.money = money;
 	}
 	
-	//getter
 	public int getUserCode() {
 		return this.userCode;
 	}
@@ -31,7 +30,6 @@ public class Account {
 		return this.money;
 	}
 	
-	//setter
 	public void setMoney(int money) {
 		this.money = money;
 	}

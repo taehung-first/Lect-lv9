@@ -1,18 +1,19 @@
 package controller;
 
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-import models.Account;
-import models.User;
+import models.계좌;
+import models.사용자;
 
-public class FileManager {
+public class 파일관리자 {
 
-	public static FileManager instance = new FileManager();
-	private UserManager um = UserManager.instance;
-	private AccountManager am = AccountManager.instance;
+	public static 파일관리자 instance = new 파일관리자();
+	private 사용자매니저 um = 사용자매니저.instance;
+	private 계좌매니저 am = 계좌매니저.instance;
 
 
 	private String userFileName = "users.txt";
@@ -83,7 +84,7 @@ public class FileManager {
 				String id = info[1];
 				String pw = info[2];
 				String name = info[3];
-				um.addUser(new User(code,id,pw,name));
+				um.addUser(new 사용자(code,id,pw,name));
 				data = br.readLine();
 				
 			}
@@ -106,7 +107,7 @@ public class FileManager {
 				int accNum = Integer.parseInt(info[1]);
 				int money = Integer.parseInt(info[2]);
 	
-				Account acc = new Account(code, accNum,money);
+				계좌 acc = new 계좌(code, accNum,money);
 				am.addAcc(acc);
 				
 				// code 를 활용 -> 해당 User 객체의 accs 배열에도 추가
@@ -117,7 +118,6 @@ public class FileManager {
 				}
 				data = br.readLine();
 			}
-			
 			fr.close();
 			br.close();
 		}catch(Exception e) {
@@ -125,6 +125,5 @@ public class FileManager {
 		}
 	}
 	
-	
-	
 }
+

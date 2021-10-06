@@ -1,12 +1,11 @@
 package models;
 
 import java.util.ArrayList;
-
 import java.util.Random;
 
-import controller.UserManager;
+import controller.사용자매니저;
 
-public class User {
+public class 사용자 {
 	Random rn = new Random();
 	private int code;	// 1000~ 9999 중복X 랜덤
 	private String id;
@@ -14,11 +13,10 @@ public class User {
 	private String name;
 	private int money;
 	
-	UserManager user = UserManager.instance;
-	//getter
-	private ArrayList<Account> accs = new ArrayList<Account>();
+	사용자매니저 user = 사용자매니저.instance;
 	
-	public User(int code, String id, String pw, String name) {
+	private ArrayList<계좌> accs = new ArrayList<계좌>();
+	public 사용자(int code, String id, String pw, String name) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -36,16 +34,16 @@ public class User {
 	public String getName() {
 		return this.name;
 	}
-	public Account getAcc(int index) {
+	public 계좌 getAcc(int index) {
 		return this.accs.get(index);
 	}
 	public int getAccsSize() {
 		return this.accs.size();
 	}
-	public void addAcc(Account e) {
+	public void addAcc(계좌 e) {
 		this.accs.add(e);
 	}
-	public void removeAcc(Account e) {
+	public void removeAcc(계좌 e) {
 		this.accs.remove(e);
 	}
 	
