@@ -92,7 +92,4 @@ public class UserManager {
 	public void addAcc(int log, Account e) {
 		this.users.get(log).addAcc(e);
 	}
-	
-	
-	
 }
