@@ -1,8 +1,8 @@
 package models;
 
-public class 메인 {
+public class main {
 	public static void main(String[]args) {
-		상점 shop = new 상점();
+		Shop shop = new Shop();
 		shop.MainMenu();
 	}
 }

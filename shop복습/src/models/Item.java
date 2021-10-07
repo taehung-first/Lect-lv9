@@ -1,11 +1,11 @@
 package models;
 
-public class 아이템 {
+public class Item {
 	public String name;
 	public int price;
 	public String category;
 	
-	public 아이템(String na, int pr, String cate) {
+	public Item(String na, int pr, String cate) {
 		this.category = cate;
 		this.name = na;
 		this.price = pr;

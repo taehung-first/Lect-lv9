@@ -1,14 +1,21 @@
 package models;
 
-public class 사용자 {
+public class User {
 	public String id;
 	public int money;
 	
-	public 사용자(String id, int money ) {
+	public User(String id, int money ) {
 		this.id = id;
 		this.money = money;
 	}
 	public void print() {
 		System.out.println(id+":"+money+"원");
+	}
+	public String getId() {
+		return this.id;
+	
+	}
+	public int getMoney() {
+		return this.money;
 	}
 }

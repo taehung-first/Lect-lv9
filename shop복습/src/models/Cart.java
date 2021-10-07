@@ -1,6 +1,6 @@
 package models;
 
-public class Â÷Æ® {
+public class Cart {
 	public String UserId;
 	public String ItemName;
 	
