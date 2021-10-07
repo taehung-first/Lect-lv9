@@ -11,7 +11,7 @@ public class UserManager {
 	static UserManager instance = new UserManager();
 	public Vector<User> userList = new Vector<User>();
 	public int log;
-	
+	public int mon;
 	public UserManager(){
 		inti();
 	}

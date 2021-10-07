@@ -4,19 +4,19 @@ package controler;
 import models.Cart;
 import models.Item;
 import models.User;
+import controler.UserManager;
 
 import java.util.Scanner;
 import java.util.Vector;
 
-
 public class ItemManager {
-	
 	
 	public static ItemManager instance = new ItemManager();
 	Vector<Item> itemList = new Vector<>();
 	Vector<Cart> jangList = new Vector<>();
 	Vector<String> category = new Vector<String>();
 	Scanner scan = new Scanner(System.in);
+	private UserManager um = new UserManager(); 
 	
 	public ItemManager() {
 		inti();
@@ -59,11 +59,13 @@ public class ItemManager {
 			System.out.println("["+i+"]"+category.get(i));
 		}
 	}
+	
 	public void printItem() {
 		for(int i=0;i<itemList.size();i++) {
 			itemList.get(i).print();
 		}
 	}
+	
 	public void printItem(int caID) {
 		int n = 0;
 		for(int i=0; i<itemList.size(); i++) {
@@ -85,6 +87,7 @@ public class ItemManager {
 		Item temp = new Item(name, price, category.get(caID));
 		itemList.add(temp);
 	}
+	
 	public void removeItem() {
 		int check = -1;
 		printItem();
@@ -170,14 +173,23 @@ public class ItemManager {
 				}
 			}
 		}
-		System.out.println("총 가격 : "+ money+", 구매하시겠습니까?1)예 2)아니오");
+		System.out.println("총 가격 : "+money+", 구매하시겠습니까?1)예 2)아니오");
 		int sel = scan.nextInt();
 		
 		if(sel==1) {
-			u.money -= money;
+			if(um.mon >= money) {
 			System.out.println("구매 완료되었습니다.");
+			um.mon-=money;
+			System.out.prieyntln("잔여금액 : "+);
+			}
+			else if(um.mon<money){
+				System.out.println("금액이 부족합니다.");
+				return;
+			}
+			
 		}
 		else if(sel==2) {
+			
 			return;
 		}
 	}

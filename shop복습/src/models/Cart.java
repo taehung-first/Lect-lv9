@@ -5,7 +5,7 @@ public class Cart {
 	public String ItemName;
 	
 	public void print() {
-		System.out.println(UserId + ", + ItemName");
+		System.out.println(UserId + ", "+this.ItemName);
 	}
 	
 }
