@@ -5,12 +5,10 @@ import java.util.Scanner;
 import controler.ItemManager;
 import controler.UserManager;
 
-public class Shop {
-
 	public class Shop {
 		Scanner scan = new Scanner(System.in);
-		UserManager um = new UserManager();
-		ItemManager im = new ItemManager();
+		private UserManager um = new UserManager();
+		private ItemManager im = new ItemManager();
 
 		public void MainMenu() {
 
@@ -96,7 +94,7 @@ public class Shop {
 		void ManagerMenu() {
 
 			while (true) {
-				System.out.println("[1.아이템관리] [2.카테고리관리] [3.장바구니관리] [4.유저관리] [0.뒤로가기] ");
+				System.out.println("1)아이템관리 2)카테고리관리 3)장바구니관리 4)유저관리] [0.뒤로가기] ");
 				int sel = scan.nextInt();
 
 				if (sel == 1) {
@@ -116,7 +114,7 @@ public class Shop {
 		void itemMenu() {
 
 			while (true) {
-				System.out.println("[1.전체아이템] [2.추가] [3.삭제] [0.뒤로가기]");
+				System.out.println("1)전체카테고리 2.)추가] 3).삭제 0)뒤로가기");
 				int sel = scan.nextInt();
 
 				if (sel == 1) {
@@ -134,7 +132,7 @@ public class Shop {
 		void cateMenu() {
 
 			while (true) {
-				System.out.println("[1.전체카테고리] [2.추가] [3.삭제] [0.뒤로가기]");
+				System.out.println("1)전체카테고리 2.)추가] 3).삭제 0)뒤로가기");
 				int sel = scan.nextInt();
 
 				if (sel == 1) {
@@ -170,4 +168,3 @@ public class Shop {
 			}
 		}
 	}
-}

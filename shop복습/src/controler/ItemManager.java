@@ -10,6 +10,8 @@ import java.util.Vector;
 
 
 public class ItemManager {
+	
+	
 	public static ItemManager instance = new ItemManager();
 	Vector<Item> itemList = new Vector<>();
 	Vector<Cart> jangList = new Vector<>();
@@ -52,9 +54,9 @@ public class ItemManager {
 			}
 		}
 	}
-	public void categrory() {
-		for(int i=0;i<jangList.size();i++) {
-			System.out.println(i+","+category.get(i));
+	public void printCategory() {
+		for(int i=0; i<category.size(); i++) {
+			System.out.println("["+i+"]"+category.get(i));
 		}
 	}
 	public void printItem() {
@@ -132,7 +134,7 @@ public class ItemManager {
 				n += 1;
 			}
 		}
-		temp.UserID = usID;
+		temp.UserId = usID;
 		jangList.add(temp);
 	}
 	
@@ -142,7 +144,7 @@ public class ItemManager {
 		
 		int check = -1;
 		for(int i=0; i<jangList.size(); i++) {
-			if(jangList.get(i).UserID.equals(u.id) && jangList.get(i).ItemName.equals(name)) {
+			if(jangList.get(i).UserId.equals(u.id) && jangList.get(i).ItemName.equals(name)) {
 				check = i;
 			}
 		}
@@ -159,7 +161,7 @@ public class ItemManager {
 		int money = 0;
 		for(int i=0; i<jangList.size(); i++) {
 			String name;
-			if(jangList.get(i).UserID.equals(u.id)) {
+			if(jangList.get(i).UserId.equals(u.id)) {
 				name = jangList.get(i).ItemName;
 				for(int j=0; j<itemList.size(); j++) {
 					if(itemList.get(j).name.equals(name)) {

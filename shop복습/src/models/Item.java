@@ -5,12 +5,13 @@ public class Item {
 	public int price;
 	public String category;
 	
-	public Item(String na, int pr, String cate) {
-		this.category = cate;
+	public Item(String na, int pr, String cate){
 		this.name = na;
 		this.price = pr;
+		this.category = cate;
 	}
-	public void print () {
-		System.out.println(name +" : "+ price + " : " +category);
+	
+	public void print() {
+		System.out.println("["+name+"]"+"["+price+"]"+"["+category+"]");
 	}
 }
