@@ -8,10 +8,11 @@ import models.User;
 public class UserManager {
 	Scanner sc = new Scanner(System.in);
 	Random rn = new Random();
-	static UserManager instance = new UserManager();
+	public static UserManager instance = new UserManager();
 	public Vector<User> userList = new Vector<User>();
 	public static int log;
 	public UserManager(){
+		
 		inti();
 	}
 	void inti() {
@@ -27,7 +28,7 @@ public class UserManager {
 			r = rn.nextInt(c.length);
 			name +=c[r];
 			
-			User temp = new User(name);
+			User temp = new User(name, r);
 			userList.add(temp);
 		}
 	}
@@ -44,7 +45,7 @@ public class UserManager {
 		}
 		if(check==-1) {
 			System.out.println(id +"님 가입을 환영합니다.");
-			User temp = new User(id);
+			User temp = new User(id, check);
 		userList.add(temp);
 		}
 		else {

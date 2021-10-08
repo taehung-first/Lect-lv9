@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import controler.ItemManager;
 import controler.UserManager;
+import models.User;
 
 	public class Shop {
 		Scanner scan = new Scanner(System.in);
@@ -11,7 +12,6 @@ import controler.UserManager;
 		private ItemManager im = new ItemManager();
 
 		public void MainMenu() {
-
 			while (true) {
 				um.printID();
 
@@ -75,7 +75,7 @@ import controler.UserManager;
 
 				String id = um.userList.get(um.log).getId();
 				int mo = um.userList.get(um.log).getMoney();
-				User u = new User(id);
+				User u = new User(id, mo);
 
 				if (sel == 1) {
 					im.printJang(u);
@@ -92,17 +92,15 @@ import controler.UserManager;
 		}
 
 		void ManagerMenu() {
-
 			while (true) {
 				System.out.println("1)아이템관리 2)카테고리관리 3)장바구니관리 4)유저관리] [0.뒤로가기] ");
 				int sel = scan.nextInt();
-
 				if (sel == 1) {
 					itemMenu();
 				} else if (sel == 2) {
 					cateMenu();
 				} else if (sel == 3) {
-					
+					basket();
 				} else if (sel == 4) {
 					userMenu();
 				} else if (sel == 0) {
@@ -112,11 +110,9 @@ import controler.UserManager;
 		}
 
 		void itemMenu() {
-
 			while (true) {
 				System.out.println("1)전체카테고리 2.)추가] 3).삭제 0)뒤로가기");
 				int sel = scan.nextInt();
-
 				if (sel == 1) {
 					im.printItem();
 				} else if (sel == 2) {
@@ -128,13 +124,42 @@ import controler.UserManager;
 				}
 			}
 		}
+		void basket() {
+			System.out.println("1)장바구니"+"0)뒤로가기" );
+			int pik = scan.nextInt();
+			int cont =0;
+			while (cont==0) {
+				System.out.println("1)장바구니 현황 2)장바구니 삭제 0)뒤로가기");
+				int sel = scan.nextInt();
+				if(sel==1) {
+					for(int i=0;i<um.userList.size();i++) {
+						if(im.jangList.get(i) != null) {
+							System.out.println("회원 ID "+ um.userList.get(i).getId() +" 품목 "+im.jangList.get(i).print());
+						}
+					}
+				}else if(sel==2) {
+					System.out.println("삭제할 아이템의 이름 적기");
+					for(int i=0;i<im.jangList.size();i++) {
+						im.jangList.get(i).print();
+						String del = scan.next();
+						if(im.jangList.get(i) == del) {
+							
+						}
+						
+					}
+				}else if(sel==0) {
+					cont=-1;
+				}
+				if(pik==0) {
+					MainMenu();
+				}
+			}
+		}
 
 		void cateMenu() {
-
 			while (true) {
 				System.out.println("1)전체카테고리 2.)추가] 3).삭제 0)뒤로가기");
 				int sel = scan.nextInt();
-
 				if (sel == 1) {
 					im.printCategory();
 				} else if (sel == 2) {
@@ -148,11 +173,9 @@ import controler.UserManager;
 		}
 
 		void userMenu() {
-			
 			while(true) {
 				System.out.println("[1.전체유저] [2.추가] [3.삭제] [0.뒤로가기]");
 				int sel = scan.nextInt();
-				
 				if(sel==1) {
 					um.print();
 				}

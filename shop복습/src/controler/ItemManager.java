@@ -12,9 +12,10 @@ import java.util.Vector;
 public class ItemManager {
 	
 	public static ItemManager instance = new ItemManager();
-	Vector<Item> itemList = new Vector<>();
-	Vector<Cart> jangList = new Vector<>();
-	Vector<String> category = new Vector<String>();
+	public Vector<Item> itemList = new Vector<>();
+	public Vector<Cart> jangList = new Vector<>();
+	
+	public Vector<String> category = new Vector<String>();
 	Scanner scan = new Scanner(System.in);
 	private UserManager um = new UserManager(); 
 	
@@ -47,6 +48,11 @@ public class ItemManager {
 		temp =new Item ("사이다",1300, category.get(3));
 		itemList.add(temp);
 	}
+	public void printAll() {
+		for(int i=0;i<um.userList.size();i++) {
+			jangList.get(i).print();
+		}
+	}
 	public void printJang(User u) {
 		for( int i=0;i<jangList.size();i++) {
 			if(u.getId().equals(jangList.get(i).UserId)) {
@@ -69,9 +75,9 @@ public class ItemManager {
 	public void printItem(int caID) {
 		int n = 0;
 		for(int i=0; i<itemList.size(); i++) {
-			if(category.get(caID).equals(itemList.get(i).category)) {
+			if(category.get(caID).equals(itemList.get(i).getCategory())) {
 				System.out.print("["+n+"]");
-				System.out.println(itemList.get(i).name);
+				System.out.println(itemList.get(i).getName());
 				n += 1;
 			}
 		}
@@ -94,7 +100,7 @@ public class ItemManager {
 		System.out.println("아이템 이름을 입력하세요.");
 		String name = scan.next();
 		for(int i=0; i<itemList.size(); i++) {
-			if(itemList.get(i).name.equals(name)) {
+			if(itemList.get(i).getName().equals(name)) {
 				check = i;
 			}
 		}
@@ -118,7 +124,7 @@ public class ItemManager {
 		System.out.println("번호를 입력하세요.");
 		int index = scan.nextInt();
 		for(int i=0; i<itemList.size(); i++) {
-			if(category.get(index).equals(itemList.get(i).category)) {
+			if(category.get(index).equals(itemList.get(i).getCategory())) {
 				itemList.remove(i);
 			}
 		}
@@ -129,9 +135,9 @@ public class ItemManager {
 		int n = 0;
 		Cart temp = new Cart();
 		for(int i=0; i<itemList.size(); i++) {
-			if(category.get(caID).equals(itemList.get(i).category)) {
+			if(category.get(caID).equals(itemList.get(i).getCategory())) {
 				if(n == itemID) {
-					temp.ItemName = itemList.get(i).name;
+					temp.ItemName = itemList.get(i).getName();
 				}
 				n += 1;
 			}
@@ -164,8 +170,8 @@ public class ItemManager {
 			if(jangList.get(i).UserId.equals(u.getId())) {
 				name = jangList.get(i).ItemName;
 				for(int j=0; j<itemList.size(); j++) {
-					if(itemList.get(j).name.equals(name)) {
-						money += itemList.get(j).price;
+					if(itemList.get(j).getName().equals(name)) {
+						money += itemList.get(j).getPrice();
 					}
 				}
 			}
