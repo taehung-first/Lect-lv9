@@ -10,8 +10,7 @@ public class UserManager {
 	Random rn = new Random();
 	static UserManager instance = new UserManager();
 	public Vector<User> userList = new Vector<User>();
-	public int log;
-	public int mon;
+	public static int log;
 	public UserManager(){
 		inti();
 	}
@@ -28,9 +27,7 @@ public class UserManager {
 			r = rn.nextInt(c.length);
 			name +=c[r];
 			
-			r = rn.nextInt(10000);
-			int money = r;
-			User temp = new User(name,money);
+			User temp = new User(name);
 			userList.add(temp);
 		}
 	}
@@ -40,16 +37,15 @@ public class UserManager {
 		String id = sc.next();
 		
 		for(int i=0;i<userList.size();i++) {
-			if(id.equals(userList.get(i).id)) {
+			if(id.equals(userList.get(i).getId())) {
 				check = i ;
 				break;
 			}
 		}
 		if(check==-1) {
 			System.out.println(id +"님 가입을 환영합니다.");
-			User temp = new User(id, 0);
+			User temp = new User(id);
 		userList.add(temp);
-		
 		}
 		else {
 			System.out.println("중복되는 아이디");
@@ -61,7 +57,7 @@ public class UserManager {
 		System.out.println("아이디 입력:");
 		String id = sc.next();
 		for(int i=0;i<userList.size();i++) {
-			if(id.equals(userList.get(i).id)) {
+			if(id.equals(userList.get(i).getId())) {
 				check =i;
 				break;
 			}
@@ -78,7 +74,7 @@ public class UserManager {
 		System.out.println("아이디 입력:");
 		String id = sc.next();
 		for(int i=0;i<userList.size();i++) {
-			if(id.equals(userList.get(i).id)) {
+			if(id.equals(userList.get(i).getId())) {
 				check =i;
 				break;
 			}
@@ -95,7 +91,7 @@ public class UserManager {
 	
 	public void logOut() {
 		if(log != -1) {
-			System.out.println(userList.get(log).id+"님 로그아웃");
+			System.out.println(userList.get(log).getId()+"님 로그아웃");
 			log = -1 ;
 		}
 		else {

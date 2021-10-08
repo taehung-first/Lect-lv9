@@ -1,12 +1,12 @@
 package models;
 
 public class User {
-	public String id;
-	public int money;
+	private String id;
+	private static int money;
 	
-	public User(String id, int money ) {
+	public User(String id ) {
 		this.id = id;
-		this.money = money;
+		this.money =5000;
 	}
 	public void print() {
 		System.out.println(id+":"+money+"¿ø");
@@ -16,6 +16,6 @@ public class User {
 	
 	}
 	public int getMoney() {
-		return this.money;
+		return money;
 	}
 }

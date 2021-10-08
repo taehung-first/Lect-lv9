@@ -46,7 +46,7 @@ import controler.UserManager;
 
 				if (sel == 1) {
 					while (true) {
-						String usID = um.userList.get(um.log).id;
+						String usID = um.userList.get(um.log).getId();
 						System.out.println("카테고리를 선택하세요. [종료:-1]");
 						im.printCategory();
 						int caID = scan.nextInt();
@@ -73,9 +73,9 @@ import controler.UserManager;
 				System.out.println("[1.내 장바구니] 2.[삭제] 3.[구입] 0.[뒤로가기]");
 				int sel = scan.nextInt();
 
-				String id = um.userList.get(um.log).id;
-				int mo = um.userList.get(um.log).money;
-				User u = new User(id, mo);
+				String id = um.userList.get(um.log).getId();
+				int mo = um.userList.get(um.log).getMoney();
+				User u = new User(id);
 
 				if (sel == 1) {
 					im.printJang(u);

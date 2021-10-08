@@ -49,7 +49,7 @@ public class ItemManager {
 	}
 	public void printJang(User u) {
 		for( int i=0;i<jangList.size();i++) {
-			if(u.id.equals(jangList.get(i).UserId)) {
+			if(u.getId().equals(jangList.get(i).UserId)) {
 				jangList.get(i).print();
 			}
 		}
@@ -121,7 +121,6 @@ public class ItemManager {
 			if(category.get(index).equals(itemList.get(i).category)) {
 				itemList.remove(i);
 			}
-			
 		}
 		category.remove(index);
 	}
@@ -140,14 +139,13 @@ public class ItemManager {
 		temp.UserId = usID;
 		jangList.add(temp);
 	}
-	
 	public void removeCart(User u) {
 		System.out.println("삭제할 아이템을 입력해주세요.");
 		String name = scan.next();
 		
 		int check = -1;
 		for(int i=0; i<jangList.size(); i++) {
-			if(jangList.get(i).UserId.equals(u.id) && jangList.get(i).ItemName.equals(name)) {
+			if(jangList.get(i).UserId.equals(u.getId()) && jangList.get(i).ItemName.equals(name)) {
 				check = i;
 			}
 		}
@@ -159,12 +157,11 @@ public class ItemManager {
 			jangList.remove(check);
 		}
 	}
-	
 	public void buyItem(User u) {
-		int money = 0;
+		int money = 0 ;
 		for(int i=0; i<jangList.size(); i++) {
 			String name;
-			if(jangList.get(i).UserId.equals(u.id)) {
+			if(jangList.get(i).UserId.equals(u.getId())) {
 				name = jangList.get(i).ItemName;
 				for(int j=0; j<itemList.size(); j++) {
 					if(itemList.get(j).name.equals(name)) {
@@ -177,19 +174,18 @@ public class ItemManager {
 		int sel = scan.nextInt();
 		
 		if(sel==1) {
-			if(um.mon >= money) {
+			if(um.userList.get(UserManager.log).getMoney() >= money) {
 			System.out.println("구매 완료되었습니다.");
-			um.mon-=money;
-			System.out.prieyntln("잔여금액 : "+);
+			int change = um.userList.get(UserManager.log).getMoney();
+			change -= money;
+			System.out.println("잔여금액"+change);
 			}
-			else if(um.mon<money){
+			else if(um.userList.get(UserManager.log).getMoney()< money){
 				System.out.println("금액이 부족합니다.");
 				return;
 			}
-			
 		}
 		else if(sel==2) {
-			
 			return;
 		}
 	}
