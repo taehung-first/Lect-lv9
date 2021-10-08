@@ -134,7 +134,7 @@ import models.User;
 				if(sel==1) {
 					for(int i=0;i<um.userList.size();i++) {
 						if(im.jangList.get(i) != null) {
-							System.out.println("雀盔 ID "+ um.userList.get(i).getId() +" 前格 "+im.jangList.get(i).print());
+							System.out.println("雀盔 ID "+ um.userList.get(i).getId() +" 前格 "+im.jangList.get(i).ItemName);
 						}
 					}
 				}else if(sel==2) {
@@ -142,9 +142,9 @@ import models.User;
 					for(int i=0;i<im.jangList.size();i++) {
 						im.jangList.get(i).print();
 						String del = scan.next();
-						if(im.jangList.get(i) == del) {
-							
-						}
+//						if(im.jangList.get(i)) {
+//							
+//						}
 						
 					}
 				}else if(sel==0) {
