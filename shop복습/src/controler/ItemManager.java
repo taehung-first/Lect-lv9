@@ -92,7 +92,6 @@ public class ItemManager {
 		int caID = scan.nextInt();
 		Item temp = new Item(name, price, category.get(caID));
 		itemList.add(temp);
-	}
 	
 	public void removeItem() {
 		int check = -1;
@@ -118,7 +117,6 @@ public class ItemManager {
 		String name = scan.next();
 		category.add(name);
 	}
-	
 	public void removeCategory() {
 		printCategory();
 		System.out.println("번호를 입력하세요.");
@@ -163,6 +161,7 @@ public class ItemManager {
 			jangList.remove(check);
 		}
 	}
+	
 	public void buyItem(User u) {
 		int money = 0 ;
 		for(int i=0; i<jangList.size(); i++) {

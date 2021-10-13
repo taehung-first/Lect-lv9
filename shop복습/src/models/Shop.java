@@ -111,7 +111,7 @@ import models.User;
 
 		void itemMenu() {
 			while (true) {
-				System.out.println("1)전체카테고리 2.)추가] 3).삭제 0)뒤로가기");
+				System.out.println("1)전체카테고리 2.)추가 3).삭제 0)뒤로가기");
 				int sel = scan.nextInt();
 				if (sel == 1) {
 					im.printItem();
@@ -134,7 +134,7 @@ import models.User;
 				if(sel==1) {
 					for(int i=0;i<um.userList.size();i++) {
 						if(im.jangList.get(i) != null) {
-							System.out.println("회원 ID "+ um.userList.get(i).getId() +" 품목 "+im.jangList.get(i).ItemName);
+							System.out.println("회원 ID "+ im. +" 품목 "+im.jangList.get(i).ItemName);
 						}
 					}
 				}else if(sel==2) {
@@ -142,7 +142,8 @@ import models.User;
 					for(int i=0;i<im.jangList.size();i++) {
 						im.jangList.get(i).print();
 						String del = scan.next();
-//						if(im.jangList.get(i)) {
+						
+//						if(im.jangList.remove(i).) {
 //							
 //						}
 						

@@ -1,9 +1,15 @@
 package models;
 
+import java.util.Vector;
+
+import controler.ItemManager;
+
 public class User {
 	private String id;
 	private static int money;
+	private Vector<Item> jang = new Vector<>();
 	
+	private ItemManager im = new ItemManager();
 	
 	public User(String id, int money) {
 		this.id = id;
@@ -24,5 +30,11 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	void shoopingBag(){
+		for(int i=0;i<im.jangList.size();i++) {
+			jang.add(im.jangList.get(i).ItemName);
+			
+		}
+	}
+	
 }
