@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Game  {
+public class Game {
 	Random rm = new Random();
 	Scanner sc = new Scanner(System.in);
 	private Game() {}
@@ -16,5 +16,13 @@ public class Game  {
 	private void info() {
 		p = new Hero("전사",100,5,1,1);
 		enemy.add(new Zombie("좀비",20,5,1,1));
+		enemy.add(new Boss("보스",200,5,1,1));
+	}
+	
+	
+	
+	private void run() {
+		
+		
 	}
 }
