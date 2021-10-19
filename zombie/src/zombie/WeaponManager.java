@@ -1,35 +1,33 @@
 package zombie;
 
-public abstract class WeaponManager{
-	private String name;
-	private int dmg;
-	private int dura;
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getDmg() {
-		return dmg;
-	}
-	public void setDmg(int dmg) {
-		this.dmg = dmg;
-	}
-	public int getDura() {
-		return dura;
-	}
-	public void setDura(int dura) {
-		this.dura = dura;
-	}
-	WeaponManager(String name, int dmg, int dura){
-		this.name = name;
-		this.dmg = dmg;
-		this.dura = dura;
-	}
-	public void equip(Hero ) {
-		int dmg = (this.att+Weapon.dmg); 
-	}
+import java.util.ArrayList;
 
+public class WeaponManager {
+	public Game g = Game.getinstance();
+	public Hero p = Hero.instance;
+	public static WeaponManager instance = new WeaponManager();
+
+	public ArrayList<Weapon> garage = new ArrayList<>();
+	
+	
+	public void SuperSuperRare() {
+		System.out.println("test3");
+		p.setatt(p.getatt() + 50);
+		System.out.println("공격력이 " + 50 + "만큼 증가했다!");
+	}
+	public void SuperRare() {
+		System.out.println("test2");
+		p.setatt(p.getatt() + 25);
+		System.out.println("공격력이 " + 25 + "만큼 증가했다!");
+	}
+	public void Rare() {
+		System.out.println("test1");
+		p.setatt(p.getatt() + 10);
+		System.out.println("공격력이 " + 10 + "만큼 증가했다!");
+	}
+	public void Nomal() {
+		System.out.println("test");
+		p.setatt(p.getatt() + 5);
+		System.out.println("공격력이 " + 5 + "만큼 증가했다!");
+	}
 }

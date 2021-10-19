@@ -2,6 +2,7 @@ package zombie;
 import java.util.Random;
 
 public abstract class Unit {
+	Random ran = new Random();
 	private String name;
 	private int hp;
 	private int att;
@@ -44,7 +45,7 @@ public abstract class Unit {
 	}
 	public void attack(Unit target) {
 		int dam = (this.att - target.def);
-		if(dam<=0) {dam = 1;}
+		if(dam<=0) {dam = 5;}
 		System.out.println(name+"의 공격!");
 		System.out.println(dam+"의 대미지!");
 		target.sethp(target.gethp()-dam);
