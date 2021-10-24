@@ -27,8 +27,8 @@ public class Game {
 	public static Random rn = new Random();
 
 	public void init() {
-		p = new Hero("용사", 500, 5, 1, 1); // Hero클래스 생성자를 public 해야 이코드 작동
-		enemyList.add(new Zombie("초보좀비", 100, 5, 1, 3)); // Zombie도 위와 마찬가지
+		p = new Hero("용사", 300, 5, 1, 1); 
+		enemyList.add(new Zombie("초보좀비", 100, 5, 1, 3));
 		enemyList.add(new Zombie("중급좀비", 150, 10, 2, 6));
 		enemyList.add(new Zombie("고급좀비", 200, 15, 3, 9));
 		enemyList.add(new ZombieKing("좀비킹", 300, 20, 4, 12, 50));
@@ -101,9 +101,9 @@ public class Game {
 
 	private int die(Unit enemy) {
 		if (p.getHp() <= 0) {
-			return 1; // 플레이어 죽음
+			return 1; 
 		} else if (enemy.getHp() <= 0) {
-			return 2; // 좀비죽음
+			return 2; 
 		}
 		return 0;
 	}
